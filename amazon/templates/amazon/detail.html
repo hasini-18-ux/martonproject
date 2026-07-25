@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="{% static 'amazon/style1.css' %}">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a class="text-light text-decoration-none" href="/blog"><h1>Fashion Store</h1></a>
+        <p>Posted on {{post.created_at}}</p>
+        <nav>
+            <a href="/blog/">Home</a>
+            <a href="about">About</a>
+            <a href="contact">Contact</a>
+            {% if user.is_authenticated %}
+            <a href="{% url 'amazon:fashionhub' %}">Fashionhub</a>
+            <a href="logout">Logout</a>
+            {% else %}
+            <a href="register">Register</a>
+            <a href="login">Login</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <!-- Product Details -->
+
+    <section class="product-details">
+
+        <div class="product-image">
+            <img src="{{post.formatted_img_url}}" alt="T-Shirt">
+        </div>
+
+        <div class="product-info">
+
+            <h2>{{post.title}} <small>({{post.category.name}})</small></h2>
+
+            <h3>₹799</h3>
+
+            <p>{{post.content}}</p>
+
+            <ul>
+                <li>100% Cotton</li>
+                <li>Regular Fit</li>
+                <li>Comfortable Fabric</li>
+                <li>Machine Wash</li>
+                <li>Free Delivery</li>
+            </ul>
+
+            <button>Add to Cart</button>
+
+        </div>
+
+    </section>
+
+    
+
+    <h2>Related Products</h2>
+
+        <div class="related-card">
+            {% for related_post in related_posts %}
+            <a href="{% url 'amazon:detail' slug=related_post.slug %}">{{related_post.title}}</a>
+            {% endfor %}
+        </div>
+    <!-- Footer -->
+
+    <footer>
+        <p>&copy; 2026 Fashion Store | All Rights Reserved</p>
+    </footer>
+</body>
+</html>

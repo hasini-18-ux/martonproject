@@ -1,0 +1,15 @@
+<header>
+        <h1>{{amazon_title | upper}}</h1>
+        <nav class="navbar navbar-expand-lg">
+            <a href="/blog/">Home</a>
+            <a href="about">About</a>
+            <a href="contact">Contact</a>
+            {% if user.is_authenticated %}
+            <a href="fashionhub">Fashion Hub</a>
+            <a href="logout">Logout</a>
+            {% else %}
+            <a href="register">Register</a>
+            <a href="login">Login</a>
+            {% endif %}
+        </nav>
+    </header>

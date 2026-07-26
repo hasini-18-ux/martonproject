@@ -26,9 +26,9 @@ SECRET_KEY = 'django-insecure-9%9o#n%xybahtd*icgd$&v5k-j+%+uy*u57_a@woee)dvcosl8
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'shopping-project.onrender.com',
+    'martonproject-2.onrender.com',
+    'localhost',
     '127.0.0.1',
-    'localhost'
 ]
 
 # Application definition

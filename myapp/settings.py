@@ -25,11 +25,7 @@ SECRET_KEY = 'django-insecure-9%9o#n%xybahtd*icgd$&v5k-j+%+uy*u57_a@woee)dvcosl8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'martonproject-2.onrender.com',
-    'localhost',
-    '127.0.0.1',
-]
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -44,6 +40,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+
+    "django.middleware.security.SecurityMiddleware", 
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -130,6 +129,11 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+STORAGES={
+    "staticfiles":{
+        "BACKEND":"whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 
 LOGGING = {

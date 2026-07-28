@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/6.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
-
+import os
+import dj_database_url
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -78,17 +79,10 @@ WSGI_APPLICATION = 'myapp.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'amazon',
-        'USER':'root',
-        'PASSWORD':'hasini@18H',
-        'HOST':'localhost',
-        'PORT':'3306',
-    }
+    "default": dj_database_url.config(
+        default=os.environ.get("MYSQL_URL")
+    )
 }
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
@@ -157,7 +151,7 @@ EMAIL_USE_TLS=True
 EMAIL_HOST_USER='dc9da06d3a89df'
 EMAIL_HOST_PASSWORD='c7f74df932b701'
 
-import os
+
 
 MEDIA_URL='/media/'
 

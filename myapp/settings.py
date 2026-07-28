@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'myapp.wsgi.application'
 
 DATABASES = {
     "default": dj_database_url.config(
-        default=os.environ.get("MYSQL_URL")
+        default=os.environ.get("mysql://root:kPPJYmyJRzAFDvHFgYSolaiwdzCynDUM@mysql.railway.internal:3306/railway")
     )
 }
 
